@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="col-md-4 mx-auto">
+
+<h3>Register</h3>
+
+<form method="POST">
+{% csrf_token %}
+
+<input class="form-control mb-2" name="username" placeholder="Username">
+
+<input class="form-control mb-2" name="email" placeholder="Email">
+
+<input class="form-control mb-2" name="password" type="password" placeholder="Password">
+
+<select name="role" class="form-control mb-2">
+
+<option value="student">Student</option>
+<option value="instructor">Instructor</option>
+
+</select>
+
+<button class="btn btn-primary w-100">
+Register
+</button>
+
+</form>
+
+</div>
+
+{% endblock %}

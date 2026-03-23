@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="text-center">
+
+<h1 class="display-4">Learn Anything Online</h1>
+
+<p class="lead">Best LMS built with Django</p>
+
+<a href="/courses/" class="btn btn-primary btn-lg">
+Browse Courses
+</a>
+
+</div>
+
+<hr>
+
+<h3>Popular Courses</h3>
+
+<div class="row">
+
+{% for course in courses %}
+
+<div class="col-md-4">
+
+<div class="card mb-3">
+
+<div class="card-body">
+
+<h5>{{ course.title }}</h5>
+
+<p>{{ course.description|truncatewords:15 }}</p>
+
+<a href="/courses/{{course.id}}" class="btn btn-primary">
+View Course
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}

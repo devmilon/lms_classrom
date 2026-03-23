@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<body>
+
+<div class="container mt-5">
+
+    <h2>Lesson Dashboard</h2>
+
+    <div class="card p-3">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                    <div class="collapse navbar-collapse" id="menu">
+                        <ul class="navbar-nav me-auto">
+
+                        <li class="nav-item">
+                        <a class="nav-link" href="/lesson/lesson-dashboard/">Lesson</a>
+                        </li>
+
+                        <li class="nav-item">
+                        <a class="nav-link" href="/courses/">Courses</a>
+                        </li>
+
+                        </ul>
+
+                        <ul class="navbar-nav">
+
+                        <li class="nav-item">
+                        <a class="nav-link" href="/create-course/">Create Course</a>
+                        </li>
+
+                        <li class="nav-item">
+                        <a class="nav-link" href="/lessons/lesson-dashboard/">Create Lesson</a>
+                        </li>
+
+                        <li class="nav-item">
+                        <a class="nav-link" href="/accounts/logout/">Logout</a>
+                        </li>
+
+                        </ul>
+                    </div>
+            </div>
+        </nav>
+    </div>
+
+    <a href="{% url 'add_lesson' %}" class="btn btn-primary mb-3">
+        Add Lesson
+    </a>
+
+    <table class="table table-bordered">
+
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Course</th>
+            <th>Action</th>
+        </tr>
+
+        {% for lesson in lessons %}
+        <tr>
+
+            <td>{{ lesson.id }}</td>
+
+            <td>{{ lesson.title }}</td>
+
+            <td>{{ lesson.course.title }}</td>
+
+            <td>
+
+                <a href="{% url 'lesson_page' lesson.id %}" class="btn btn-success btn-sm">
+                    View
+                </a>
+
+                <a href="{% url 'edit_lesson' lesson.id %}" class="btn btn-warning btn-sm">
+                    Edit
+                </a>
+
+                <a href="{% url 'delete_lesson' lesson.id %}" class="btn btn-danger btn-sm">
+                    Delete
+                </a>
+
+            </td>
+
+        </tr>
+        {% endfor %}
+
+    </table>
+
+</div>
+
+</body>
+
+{% endblock %}

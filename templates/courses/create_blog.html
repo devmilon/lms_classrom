@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Create New Course</h1>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label for="course_name" class="form-label">Course Name</label>
+                <input type="text" class="form-control" id="course_name" name="name" placeholder="Enter course name" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="course_description" class="form-label">Course Description</label>
+                <textarea class="form-control" id="course_description" name="description" rows="5" placeholder="Enter course description" required></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="course_category" class="form-label">Category</label>
+                <select class="form-select" id="course_category" name="category">
+                    <option value="" selected>Select category</option>
+                    <option value="programming">Programming</option>
+                    <option value="design">Design</option>
+                    <option value="marketing">Marketing</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Create Course</button>
+        </form>
+    </div>
+
+</body>
+
+{% endblock %}
